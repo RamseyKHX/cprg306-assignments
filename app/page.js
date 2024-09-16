@@ -3,15 +3,23 @@ import Link from "next/link";
 
 export default function Page() {
   return(
-    <main>
-      <h1>CPRG 306: Web Development 2 - Assignments</h1>
-
-      <ul >
-        <Link href="week-2">Week 2</Link>
-      </ul>
-      <ul>
-      <Link href="week-3">Week 3</Link>
-      </ul>
+    <main className="min-h-screen flex flex-col items-center bg-black">
+      <h1 className="text-4xl font-bold text-green-500 text-center mb-8">CPRG 306: Web Development 2 - Assignments</h1>
+      
+      <div className="flex flex-col space-y-4 ml-4">
+        <ul className="text-2xl">
+            <li>
+            <Link href="week-2" className="text-red-500 hover:underline">Week 2</Link>
+            </li>
+            
+          </ul>
+          
+          <ul className="text-2xl">
+            <li>
+            <Link href="week-3" className="text-blue-500 hover:underline">Week 3</Link>
+            </li>
+          </ul>
+      </div>
     </main>
     
   );

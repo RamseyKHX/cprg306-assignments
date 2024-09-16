@@ -4,62 +4,62 @@ import Item from './item';
 export default function ItemList() {
   const items = [
     {
-      name: "Milk, 4 L 🥛",
+      name: "milk, 4 L 🥛",
       quantity: 1,
       category: "dairy",
     },
     {
-      name: "Bread 🍞",
+      name: "bread 🍞",
       quantity: 2,
       category: "bakery",
     },
     {
-      name: "Eggs, dozen 🥚",
+      name: "eggs, dozen 🥚",
       quantity: 2,
       category: "dairy",
     },
     {
-      name: "Bananas 🍌",
+      name: "bananas 🍌",
       quantity: 6,
       category: "produce",
     },
     {
-      name: "Broccoli 🥦",
+      name: "broccoli 🥦",
       quantity: 3,
       category: "produce",
     },
     {
-      name: "Chicken breasts, 1 kg 🍗",
+      name: "chicken breasts, 1 kg 🍗",
       quantity: 1,
       category: "meat",
     },
     {
-      name: "Pasta sauce 🍝",
+      name: "pasta sauce 🍝",
       quantity: 3,
       category: "canned goods",
     },
     {
-      name: "Spaghetti, 454 g 🍝",
+      name: "spaghetti, 454 g 🍝",
       quantity: 2,
       category: "dry goods",
     },
     {
-      name: "Toilet paper, 12 pack 🧻",
+      name: "toilet paper, 12 pack 🧻",
       quantity: 1,
       category: "household",
     },
     {
-      name: "Paper towels, 6 pack",
+      name: "paper towels, 6 pack",
       quantity: 1,
       category: "household",
     },
     {
-      name: "Dish soap 🍽️",
+      name: "dish soap 🍽️",
       quantity: 1,
       category: "household",
     },
     {
-      name: "Hand soap 🧼",
+      name: "hand soap 🧼",
       quantity: 4,
       category: "household",
     }

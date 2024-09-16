@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <main> 
+    <main className="min-h-screen bg-[#301934]"> 
       <div>
-        <h1 className="text-purple-500 text-2xl font-bold mb-4">Shopping List</h1>
+        <h1 className="text-red-500 text-3xl font-bold mb-4">Shopping List</h1>
         <ItemList />
         
       </div>
