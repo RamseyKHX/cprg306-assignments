@@ -1,104 +1,82 @@
-'use client';
-
-import { useState } from "react";
+"use client";
+import React, { useState } from 'react';
 
 export default function NewItem({ onAddItem }) {
-    const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(1);
-    const [category, setCategory] = useState("produce");
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [category, setCategory] = useState("produce");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        const newItem = {
-            id: Math.random().toString(36).substr(2, 9),
-            name,
-            quantity,
-            category,
-        };
+    const item = {
+      id: Math.random().toString(36).substring(2, 15),
+      name,
+      quantity,
+      category,
+    };
 
-        onAddItem(newItem);
+    onAddItem(item);
 
-        
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
+  };
 
-        setName("");
-        setQuantity(1);
-        setCategory("produce");
-    }
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col items-center p-4 space-y-4">
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Item Name"
+        required
+        className="border px-11 p-2 rounded text-black"
+      />
 
-    const increment = () => {
-        if (quantity < 20) {
-            setQuantity(quantity + 1);
-        }
-    }
+      <div className="flex space-x-4">
+        <div className="flex items-center space-x-2">
+          <button
+            type="button"
+            onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : prev))}
+            className={`bg-blue-500 text-black w-10 rounded ${quantity === 1 ? 'bg-gray-500' : ''}`}
+            disabled={quantity === 1}
+          >
+            -
+          </button>
 
-    const decrement = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        }
-    }
-
-    function NewItem({ onAddItem }) { 
-
-     }
-
-
-    return (
-        <div className="flex justify-center items-center">
-            <form onSubmit={handleSubmit} className="text-black bg-slate-900 p-4 mt-3 shadow-lg space-y-4">
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Item name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md"/>
-                </div>
-    
-                <div className="flex items-center">
-                    <div className="flex items-center bg-white p-2 rounded-md shadow-md">
-                        <span className="text-l pr-10 text-black">{quantity}</span>
-                        <button
-                            type="button"
-                            onClick={decrement}
-                            className={`w-7 h-5 flex items-center justify-center rounded-sm text-white font-bold mr-3
-                            ${quantity === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-gray-400 hover:bg-gray-600'}`}
-                            disabled={quantity === 1}>-
-                        </button>
-                        <button
-                            type="button"
-                            onClick={increment}
-                            className={`w-7 h-5 flex items-center justify-center rounded-sm text-white font-bold 
-                            ${quantity === 20 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-400'}`}
-                            disabled={quantity === 20}>+
-                        </button>
-                    </div>
-
-                    <div className="ml-28">
-                        <select
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            className="mt-1 block p-2 border border-gray-300 rounded-md">
-
-                            <option value="" disabled className="text-gray-400">Category</option>
-                            <option value="Produce">Produce</option>
-                            <option value="Dairy">Dairy</option>
-                            <option value="Bakery">Bakery</option>
-                            <option value="Meat">Meat</option>
-                            <option value="Frozen Foods">Frozen Foods</option>
-                            <option value="Canned Goods">Canned Goods</option>
-                            <option value="Dry Goods">Dry Goods</option>
-                            <option value="Beverages">Beverages</option>
-                            <option value="Snacks">Snacks</option>
-                            <option value="Household">Household</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-    
-                <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-48 rounded hover:bg-blue-400">+</button>
-            </form>
+          <p className="text-xl font-bold">{quantity}</p>
+          <button
+            type="button"
+            onClick={() => setQuantity((prev) => (prev < 20 ? prev + 1 : prev))}
+            className={`bg-blue-500 text-black w-10 rounded ${quantity === 20 ? 'bg-gray-500' : ''}`}
+            disabled={quantity === 20}
+          >
+            +
+          </button>
         </div>
-    );
+
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+          className="border p-2 rounded text-black"
+        >
+          <option value="produce">Produce</option>
+          <option value="dairy">Dairy</option>
+          <option value="bakery">Bakery</option>
+          <option value="meat">Meat</option>
+          <option value="frozen">Frozen Foods</option>
+          <option value="canned">Canned Goods</option>
+          <option value="dry">Dry Goods</option>
+          <option value="beverages">Beverages</option>
+          <option value="snacks">Snacks</option>
+          <option value="household">Household</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" className="bg-green-800 text-white py-2 px-12 rounded">Add</button>
+    </form>
+  );
 }

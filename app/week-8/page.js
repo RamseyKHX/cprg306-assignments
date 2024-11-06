@@ -1,8 +1,7 @@
-'use client';
-
-import { useState } from 'react';
-import ItemList from './item-list';
+"use client";
+import React, { useState } from 'react';
 import NewItem from './new-item';
+import ItemList from './item-list';
 import MealIdeas from './meal-ideas';
 import itemsData from './items.json';
 
@@ -11,7 +10,7 @@ export default function Page() {
     const [selectedItemName, setSelectedItemName] = useState('');
 
     const handleAddItem = (newItem) => {
-        setItems([...items, newItem]);
+        setItems((prevItems) => [...prevItems, newItem]);
     };
 
     const handleItemSelect = (itemName) => {
@@ -20,16 +19,16 @@ export default function Page() {
     };
 
     return (
-        <main className="flex bg-slate-950">
-            <div className="w-1/2">
-                <h1 className="text-3xl font-bold text-white-800 mb-8 pt-3 px-2">
-                    Shopping List
-                </h1>
-                <NewItem onAddItem={handleAddItem}/>
-                <ItemList items={items} onItemSelect={handleItemSelect}/>
-            </div>
-            <div className="w-1/2">
-                {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+        <main className="min-h-screen bg-[#301934] p-4">
+            <h1 className="text-red-500 text-3xl font-bold mb-4">Shopping List</h1>
+            <NewItem onAddItem={handleAddItem} />
+            <div className="flex">
+                <div className="w-1/2">
+                    <ItemList items={items} onItemSelect={handleItemSelect} />
+                </div>
+                <div className="w-1/2">
+                    {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+                </div>
             </div>
         </main>
     );
